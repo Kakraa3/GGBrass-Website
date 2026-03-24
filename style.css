@@ -41,6 +41,10 @@
   
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 /* Styling the whole site */
 ul{
     list-style: none;
@@ -127,12 +131,12 @@ header .navbar{
 }
 
 /* Hero section styling */
-.hero-setion{
+.hero-section{
     min-height: 100vh;
     background: var(--white-color);
 }
 
-.hero-setion .section-content {
+.hero-section .section-content {
     display: flex;
     align-items: center;
     min-height: 100vh;
@@ -140,31 +144,31 @@ header .navbar{
     justify-content: space-between;
 }
 
-.hero-setion .hero-details .title {
+.hero-section .hero-details .title {
     font-size: var(--font-size-xxl);
     color: var(--primary-color);
     font-family: "Poppins", sans-serif;
 }
 
-.hero-setion .hero-details .subtitle {
+.hero-section .hero-details .subtitle {
     margin-top: 8px;
     max-width: 70%;
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
 }
 
-.hero-setion .hero-details .description {
+.hero-section .hero-details .description {
     max-width: 70%;
     margin: 24px 0 40px;
     font-size: var(--font-size-m);
 }
 
-.hero-setion .hero-details .buttons {
+.hero-section .hero-details .buttons {
     display: flex;
     gap: 23px;
 }
 
-.hero-setion .hero-details .button {
+.hero-section .hero-details .button {
     padding: 10px 26px;
     border: 2px solid transparent;
     color: var(--primary-color);
@@ -174,20 +178,20 @@ header .navbar{
     transition: 0.3s ease;
 }
 
-.hero-setion .hero-details .button:hover ,
-.hero-setion .hero-details .contact-us {
+.hero-section .hero-details .button:hover ,
+.hero-section .hero-details .contact-us {
     color: var(--primary-color);
     border-color: var(--primary-color);
     background: transparent;
 }
 
-.hero-setion .hero-details .contact-us:hover{
+.hero-section .hero-details .contact-us:hover{
     color: var(--primary-color);
     border-color: var(--secondary-color);
     background: var(--secondary-color);
 }
 
-.hero-setion .hero-image-wrapper {
+.hero-section .hero-image-wrapper {
     max-width: 500px;
     margin-right: 30px;
 }
@@ -199,6 +203,7 @@ header .navbar{
 }
 
 .about-section .section-content {
+    user-select: none;
     display: flex;
     gap: 50px;
     align-items: center;
@@ -250,6 +255,7 @@ header .navbar{
     padding: 50px 0 100px;
 }
 .menu-section .menu-list {
+    user-select: none;
     display: flex;
     flex-wrap: wrap;
     gap: 110px;
@@ -289,6 +295,7 @@ header .navbar{
 }
 
 .gallery-section .gallery-list {
+    user-select: none;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -310,6 +317,87 @@ header .navbar{
 .gallery-section .gallery-items:hover .gallery-image {
     transform: scale(1.3);
     transition: 0.3s ease;
+}
+
+/*event section styling*/
+
+.event-section {
+    padding: 60px 20px;
+    background: #0f0f0f;
+    color: #fff;
+    text-align: center;
+}
+
+.event-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: gold;
+}
+
+.event-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.event-items {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: left;
+    transition: 0.3s ease;
+    border: 1px solid #333;
+}
+
+.event-items:hover {
+    transform: translateY(-10px);
+    border-color: gold;
+}
+
+/* Event text styles */
+.event-name {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: gold;
+}
+
+.event-date,
+.event-location,
+.event-ticket {
+    font-size: 0.95rem;
+    margin: 5px 0;
+}
+
+.event-description {
+    font-size: 0.9rem;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+/* Countdown */
+.event-countdown {
+    margin: 10px 0;
+    font-weight: bold;
+    color: #00ffcc;
+}
+
+/* Button */
+.buy-ticket {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: gold;
+    color: #000;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.buy-ticket:hover {
+    background: #ffd700cc;
 }
 
 /* Contact Form Styling */
@@ -339,12 +427,55 @@ header .navbar{
 
 .contact-section .contact-form .form-input {
     width: 80%;
+    height: 45px;
+    outline: none;
+    background: var(--white-color);
     padding: 12px 15px;
     margin-bottom: 30px;
     border: 1px solid var(--medium-gray-color);
     border-radius: var(--border-radius-s);
 }
 
+.contact-section .contact-form {
+    max-width: 50%;
+}
+
+.contact-section .contact-form .form-input:focus {
+    border-color: var(--primary-color);
+}
+
+.contact-section .contact-form textarea.form-input {
+    height: 100px;
+    padding: 12px;
+    resize: vertical;
+}
+
+.contact-section .contact-form .submit-button {
+    padding: 10px 26px;
+    margin-top: 10px;
+    color: var(--white-color);
+    border-radius: var(--border-radius-m);
+    background: var(--primary-color);
+    font-weight: var(--font-weight-medium);
+    border: 1px solid var(--primary-color);
+    transition: 0.3s ease;
+}
+
+.contact-section .contact-form .submit-button:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+/*footer styling*/
+.footer {
+    background: var(--dark-color);
+    color: var(--white-color);
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* Responsive media query code for max width 1024px */
 @media screen  and (max-width: 1024px) {
@@ -421,7 +552,7 @@ header .navbar{
     }
 
     /* Hero section styling for small screen*/
-    .hero-setion .section-content {
+    .hero-section .section-content {
         gap: 50px;
         text-align: center;
         padding: 30px 20px 20px;
@@ -429,15 +560,15 @@ header .navbar{
         justify-content: center;
     }
 
-    .hero-setion .hero-details :is(.subtitle, .description), .about-section .about-details {
+    .hero-section .hero-details :is(.subtitle, .description), .about-section .about-details, .contact-section .contact-form {
         max-width: 100%;
     }
 
-    .hero-setion .hero-details .buttons {
+    .hero-section .hero-details .buttons {
         justify-content: center;
     }
 
-    .hero-setion .hero-image-wrapper {
+    .hero-section .hero-image-wrapper {
         max-width: 270px;
         margin-right: 0;
     }
@@ -473,6 +604,11 @@ header .navbar{
 
     .gallery-section .gallery-list .gallery-items {
         width: calc(100% / 2 - 30px);
+    }
+
+    .contact-section .section-content {
+        flex-direction: column-reverse;
+        align-items: center;
     }
 }
 

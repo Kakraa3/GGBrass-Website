@@ -26,19 +26,19 @@
                     <a href="#" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">About Band</a>
+                    <a href="#about" class="nav-link">About Band</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Services</a>
+                    <a href="#services" class="nav-link">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Gallery</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Events</a>
+                    <a href="#events" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </li>
             </ul>
 
@@ -50,7 +50,7 @@
 
     <main>
         <!-- Hero section -->
-        <section class="hero-setion">
+        <section class="hero-section">
             <div class="section-content">
                 <div class="hero-details">
                     <h2 class="title"> Experience the Sound of GG Brass </h2>
@@ -70,7 +70,7 @@
         </section>
 
         <!-- About section -->
-         <section class="about-section">
+         <section class="about-section" id="about">
             <div class="section-content">
                 <div class="about-image-wrapper">
                     <img src="Us.jpeg" alt="About Us" class="about-image">
@@ -93,7 +93,7 @@
          </section>
 
         <!-- Menu section -->
-         <section class="menu-section">
+         <section class="menu-section" id="services">
             <h2 class="section-title">Our Services</h2>
             <div class="section-content">
                 <ul class="menu-list">
@@ -132,7 +132,7 @@
          </section>
 
          <!-- Gallery section -->
-         <section class="gallery-section">
+         <section class="gallery-section" id="gallery">
             <h2 class="section-title">Gallery</h2>
             <div class="section-content">
                 <ul class="gallery-list">
@@ -183,21 +183,49 @@
          </section>
 
          <!-- Events section -->
-          <section class="event-section">
-            <h2 class="event-title">Event</h2>
-            <div class="section-content">
-                <ul class="event-list">
-                    <li class="event-items">
-                        <h3 class="event-name">GGBrass Live at Dome Parakuo</h3>
-                        <p class="event-date">Date: 25th December 2024</p>
-                        <p class="event-description">Join us for a festive celebration with GGBrass at Dome Parakuo. Experience the vibrant sounds of our brass band as we bring holiday cheer to the stage. Don't miss this unforgettable event filled with music, joy, and festive spirit!</p>
-                    </li>
-                </ul>
-            </div>
-          </section>
+<section class="event-section" id="events">
+    <h2 class="event-title">Upcoming Events</h2>
+    <div class="section-content">
+        <ul class="event-list">
 
+            <!-- MAIN EVENT -->
+            <li class="event-items">
+                <h3 class="event-name">GGBrass Live at Dome Parakuo</h3>
+
+                <p class="event-date"><strong>Date:</strong> 25th December 2026</p>
+                <p class="event-location"><strong>Location:</strong> Dome Parakuo, Accra</p>
+                <p class="event-ticket"><strong>Tickets:</strong> GHS 50 (Regular) | GHS 100 (VIP)</p>
+
+                <!-- Countdown -->
+                <p class="event-countdown">
+                    ⏳ Event starts in: <span id="countdown"></span>
+                </p>
+
+                <p class="event-description">
+                    Join GGBrass for an unforgettable festive performance filled with powerful brass music,
+                    energy, and celebration. Experience live entertainment like never before this Christmas!
+                </p>
+
+                <a href="#" class="button buy-ticket">Buy Ticket</a>
+            </li>
+
+            <!-- SECOND EVENT -->
+            <li class="event-items">
+                <h3 class="event-name">Wedding Performance – East Legon</h3>
+                <p class="event-date"><strong>Date:</strong> 10th January 2027</p>
+                <p class="event-location"><strong>Location:</strong> East Legon, Accra</p>
+                <p class="event-description">
+                    A beautiful wedding celebration featuring live brass music by GGBrass.
+                </p>
+
+                <a href="#" class="button buy-ticket">Book Event</a>
+            </li>
+
+        </ul>
+    </div>
+</section>
          <!-- Contact section -->
-         <section class="contact-section">
+         <section class="contact-section" id="contact">
             <h2 class="section-title">Contact Us</h2>
             <div class="section-content">
                 <ul class="contact-list">
@@ -223,9 +251,18 @@
                     <input type="text" placeholder="Your Name" class="form-input" required>
                     <input type="email" placeholder="Your Email" class="form-input" required>
                     <textarea placeholder="Your Message" class="form-textarea" required></textarea>
-                    <button type="submit" class="button submit-button">Send Message</button>
+                    <button type="submit" class="button submit-button">Send</button>
                 </form>
             </div>
+            </section>
+
+            <!--footer section-->
+            <footer class="footer">
+                <div class="section-content">
+                    <p class="copyright-text">Copyright &copy; 2026 GGBrass. All rights reserved.</p>
+
+                </div>
+            </footer>
 
     </main>
 
