@@ -400,9 +400,52 @@ header .navbar{
     background: #ffd700cc;
 }
 
+/* POPUP STYLE */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.popup-content input,
+.popup-content textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.popup-content button {
+  background: gold;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.close-btn {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
 /* Contact Form Styling */
 .contact-section {
-    padding: 50px 0 100px;
+    padding: 50px 0 0;
     background: var(--light-pink-color);
 }
 
@@ -444,10 +487,22 @@ header .navbar{
     border-color: var(--primary-color);
 }
 
+.contact-section .contact-form textarea {
+    width: 80%;
+    height: 45px;
+    outline: none;
+    background: var(--white-color);
+    padding: 12px 15px;
+    margin-bottom: 30px;
+    border: 1px solid var(--medium-gray-color);
+    border-radius: var(--border-radius-s);
+}
+
 .contact-section .contact-form textarea.form-input {
-    height: 100px;
-    padding: 12px;
-    resize: vertical;
+    min-height: 120px;
+    height: auto;
+    overflow: hidden;  /* removes scrollbar */
+    resize: none;   
 }
 
 .contact-section .contact-form .submit-button {
@@ -459,9 +514,90 @@ header .navbar{
     font-weight: var(--font-weight-medium);
     border: 1px solid var(--primary-color);
     transition: 0.3s ease;
+    width: fit-content;
+    align-self: flex-start;
 }
 
 .contact-section .contact-form .submit-button:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+/* Map styling */
+.map {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.map iframe {
+  width: 100%;
+  height: 500px; /* good size for laptop */
+  border: 0;
+}
+
+/* ── NEWSLETTER ── */
+  .newsletter {
+    padding: 20px 2vw;
+    border-top: 1px solid var(--medium-gray-color);
+    max-width: 600px;
+    margin: 0 auto;
+     text-align: center;
+  }
+  
+  .newsletter h2 {
+  margin-bottom: 10px;
+}
+
+.newsletter p {
+  color: var(--muted);
+  max-width: 420px;
+  margin: 0.5rem auto 1rem;  /* reduced spacing */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .newsletter-form input {
+  flex: 1;
+  background: var(--light-pink-color);
+  border: 1px solid var(--medium-gray-color);
+  border-right: none;
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.9rem;
+  padding: 14px 18px;
+  outline: none;
+  border-radius: 25px 0 0 25px; /* rounded left side */
+}
+  .newsletter-form input:focus { 
+    border-color: var(--primary-color);
+
+}
+  .newsletter-form input::placeholder { 
+    color: var(--muted); 
+
+}
+  .newsletter-form button {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border: 1px solid var(--primary-color);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  border-radius: 0 25px 25px 0; /* rounded right side */
+}
+  .newsletter-form button:hover { 
     background: transparent;
     color: var(--primary-color);
 }
@@ -622,4 +758,24 @@ header .navbar{
     .gallery-section .gallery-list .gallery-items {
         width: 100%;
     }
+}
+
+/* SCROLL REVEAL EFFECT */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  transform: translateX(-60px);
+}
+
+.reveal-right {
+  transform: translateX(60px);
 }

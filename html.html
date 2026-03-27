@@ -58,8 +58,8 @@
                     <p class="description">GGBrass is a passionate brass band delivering powerful performances for concerts, churches, weddings, and special events. We bring music that moves hearts and energizes every audience. </p>
 
                     <div class="bottons">
-                        <a href="#" class="button order-now"> Book Us </a>
-                        <a href="#" class="button contact-us"> Contact Us </a>
+                        <a href="#events" class="button order-now"> Book Us </a>
+                        <a href="#contact" class="button contact-us"> Contact Us </a>
                     </div>
                 </div>
                 <div class="hero-image-wrapper">
@@ -70,7 +70,7 @@
         </section>
 
         <!-- About section -->
-         <section class="about-section" id="about">
+         <section class="about-section reveal" id="about">
             <div class="section-content">
                 <div class="about-image-wrapper">
                     <img src="Us.jpeg" alt="About Us" class="about-image">
@@ -93,7 +93,7 @@
          </section>
 
         <!-- Menu section -->
-         <section class="menu-section" id="services">
+         <section class="menu-section reveal" id="services">
             <h2 class="section-title">Our Services</h2>
             <div class="section-content">
                 <ul class="menu-list">
@@ -132,7 +132,7 @@
          </section>
 
          <!-- Gallery section -->
-         <section class="gallery-section" id="gallery">
+         <section class="gallery-section reveal" id="gallery">
             <h2 class="section-title">Gallery</h2>
             <div class="section-content">
                 <ul class="gallery-list">
@@ -183,7 +183,7 @@
          </section>
 
          <!-- Events section -->
-<section class="event-section" id="events">
+<section class="event-section reveal" id="events">
     <h2 class="event-title">Upcoming Events</h2>
     <div class="section-content">
         <ul class="event-list">
@@ -218,14 +218,32 @@
                     A beautiful wedding celebration featuring live brass music by GGBrass.
                 </p>
 
-                <a href="#" class="button buy-ticket">Book Event</a>
+                <a href="#" class="button buy-ticket open-popup">Book Event</a>
             </li>
 
         </ul>
     </div>
+
+    <!-- BOOKING POPUP -->
+<div id="booking-popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+
+    <h2>Book / Buy Ticket</h2>
+
+    <form id="booking-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Event Type (Booking)" required>
+      <textarea placeholder="Your Message"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
 </section>
          <!-- Contact section -->
-         <section class="contact-section" id="contact">
+         <section class="contact-section reveal" id="contact">
             <h2 class="section-title">Contact Us</h2>
             <div class="section-content">
                 <ul class="contact-list">
@@ -248,13 +266,39 @@
                 </ul>
 
                 <form action="#" class="contact-form">
-                    <input type="text" placeholder="Your Name" class="form-input" required>
-                    <input type="email" placeholder="Your Email" class="form-input" required>
-                    <textarea placeholder="Your Message" class="form-textarea" required></textarea>
+                    <input type="text" name="name" placeholder="Your Name" class="form-input" required>
+                    <input type="email" name="email" placeholder="Your Email" class="form-input" required>
+                    <textarea name="message" placeholder="Your Message" class="form-textarea" required></textarea>
                     <button type="submit" class="button submit-button">Send</button>
                 </form>
             </div>
+
+            <!-- Map -->
+             <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.4791389051734!2d-0.23081560000000004!3d5.6435931!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf99f8a9e5cac9%3A0x172aff46b43cb9f1!2sGG%20Brass!5e0!3m2!1sen!2sgh!4v1774560417809!5m2!1sen!2sgh" 
+                width="600" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+             </div>
+
             </section>
+
+
+            <!-- NEWSLETTER -->
+<section class="newsletter reveal">
+  <h2 class="section-title">Never Miss a Show</h2>
+  <p>Get notified when new dates drop.</p>
+
+  <form class="newsletter-form">
+    <input type="email" name="email" placeholder="your@email.com" required>
+    <button type="submit">Notify Me</button>
+  </form>
+
+</section>
 
             <!--footer section-->
             <footer class="footer">
