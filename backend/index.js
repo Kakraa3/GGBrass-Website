@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const Newsletter = require('./models/Newsletter');
+
 mongoose.connect("mongodb://127.0.0.1:27017/ggbrass")
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
@@ -31,29 +33,55 @@ app.get('/', (req, res) => {
 app.post('/contact', async (req, res) => {
   const { name, email, message, type } = req.body;
 
-  const subject = type === "booking"
-    ? "🎺 New Booking Request"
-    : "📩 New Contact Message";
-
   try {
-    await transporter.sendMail({
-      from: email,
-      to: 'clementeklu2004@gmail.com',
-      subject: subject,
-      text: `
-Type: ${type}
+    // NEWSLETTER → SAVE TO DB ONLY
+    if (type === "newsletter") {
+  try {
+    const existingUser = await Newsletter.findOne({ email });
 
-Name: ${name}
-Email: ${email}
-Message: ${message}
-      `,
-    });
+    if (existingUser) {
+      return res.json({ message: "You are already subscribed!" });
+    }
 
-    res.json({ message: 'Message sent successfully!' });
+    const newSubscriber = new Newsletter({ email });
+    await newSubscriber.save();
+
+    return res.json({ message: "Subscribed successfully!" });
 
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Error sending message' });
+    return res.status(500).json({ message: "Error subscribing" });
+  }
+}
+
+    // EMAIL PART (CONTACT + BOOKING)
+    let subject;
+
+    if (type === "booking") {
+      subject = "New Booking Request";
+    } else {
+      subject = "New Contact Message";
+    }
+
+    await transporter.sendMail({
+      from: '"GGBrass Website" <clementeklu2004@gmail.com>',
+      to: 'clementeklu2004@gmail.com',
+      replyTo: email,
+      subject: subject,
+      text: `
+Type: ${type || "contact"}
+
+Name: ${name || "N/A"}
+Email: ${email}
+Message: ${message || "N/A"}
+      `,
+    });
+
+    res.json({ message: "Message sent successfully!" });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error processing request" });
   }
 });
 
