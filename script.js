@@ -143,7 +143,7 @@ bookingForm.addEventListener("submit", async (e) => {
 });
 
   try {
-    const res = await fetch("http://localhost:5000/contact", {
+    const res = await fetch("https://ggbrass-website-2.onrender.com/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("DATA:", data); 
 
     try {
-      const res = await fetch("http://localhost:5000/contact", {
+      const res = await fetch("https://ggbrass-website-2.onrender.com/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -222,7 +222,7 @@ newsletterForm.addEventListener("submit", async (e) => {
   const email = newsletterForm.querySelector("input[name='email']").value;
 
   try {
-    const res = await fetch("http://localhost:5000/subscribe", {
+    const res = await fetch("https://ggbrass-website-2.onrender.com/subscribe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
