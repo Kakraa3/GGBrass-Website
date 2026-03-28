@@ -110,6 +110,25 @@ app.post('/subscribe', async (req, res) => {
 
 });
 
+app.post('/subscribe', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    await transporter.sendMail({
+      from: 'GGBrass Website <clementeklu2004@gmail.com>',
+      to: 'clementeklu2004@gmail.com',
+      subject: 'New Newsletter Subscriber',
+      text: `New subscriber: ${email}`,
+    });
+
+    res.json({ message: 'Subscribed successfully!' });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Subscription failed' });
+  }
+});
+
 app.post('/send-newsletter', async (req, res) => {
 
   const { subject, message } = req.body;
