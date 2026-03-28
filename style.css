@@ -515,8 +515,8 @@ header .navbar{
     font-weight: var(--font-weight-medium);
     border: 1px solid var(--primary-color);
     transition: 0.3s ease;
-    width: fit-content;
-    align-self: flex-start;
+   display: block;
+   margin-left: 0;
 }
 
 .contact-section .contact-form .submit-button:hover {
