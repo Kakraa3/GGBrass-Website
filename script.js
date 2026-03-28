@@ -97,50 +97,12 @@ const form = document.querySelector(".contact-form");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Contact form only
   const data = {
-  name: form.querySelector('input[name="name"]').value,
-  email: form.querySelector('input[name="email"]').value,
-  message: form.querySelector('textarea[name="message"]').value,
-  type: "contact"
-};
-
-// BOOKING FORM → SEND TO BACKEND
-const bookingForm = document.getElementById("booking-form");
-
-bookingForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  console.log("Submitting booking...");
-
-  const inputs = bookingForm.querySelectorAll("input, textarea");
-
-  const data = {
-    name: inputs[0].value,
-    email: inputs[1].value,
-    message: inputs[3].value || inputs[2].value,
-    type: "booking"
+    name: form.querySelector('input[name="name"]').value,
+    email: form.querySelector('input[name="email"]').value,
+    message: form.querySelector('textarea[name="message"]').value,
+    type: "contact"
   };
-
-  try {
-   const res = await fetch("https://ggbrass-website-2.onrender.com/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await res.json();
-    alert(result.message);
-
-    bookingForm.reset();
-    popup.style.display = "none";
-
-  } catch (error) {
-    alert("Failed to send booking");
-  }
-});
 
   try {
     const res = await fetch("https://ggbrass-website-2.onrender.com/contact", {
@@ -154,7 +116,7 @@ bookingForm.addEventListener("submit", async (e) => {
     const result = await res.json();
     alert(result.message);
 
-    form.reset(); // clears form after submit
+    form.reset();
   } catch (error) {
     alert("Something went wrong!");
   }
@@ -216,28 +178,38 @@ document.addEventListener("DOMContentLoaded", () => {
 // NEWSLETTER SUBSCRIBE
 const newsletterForm = document.querySelector(".newsletter-form");
 
-newsletterForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const email = newsletterForm.querySelector("input[name='email']").value;
+    const emailInput = newsletterForm.querySelector("input[name='email']");
+    const email = emailInput.value;
 
-  try {
-    const res = await fetch("https://ggbrass-website-2.onrender.com/subscribe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
+    if (!email) {
+      alert("Please enter your email");
+      return;
+    }
 
-    const data = await res.json();
-    alert(data.message);
+    try {
+      const res = await fetch("https://ggbrass-website-2.onrender.com/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          type: "newsletter"
+        }),
+      });
 
-    newsletterForm.reset();
+      const data = await res.json();
+      alert(data.message);
 
-  } catch (error) {
-    alert("Subscription failed!");
-  }
-});
+      newsletterForm.reset();
 
+    } catch (error) {
+      alert("Subscription failed!");
+    }
+  });
+}
 
