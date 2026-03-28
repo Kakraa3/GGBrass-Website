@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const Newsletter = require('./models/Newsletter');
 
-mongoose.connect("mongodb://127.0.0.1:27017/ggbrass")
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+//mongoose.connect("mongodb://127.0.0.1:27017/ggbrass")
+  //.then(() => console.log("MongoDB connected"))
+  //.catch(err => console.log(err));
 
   const subscriberSchema = new mongoose.Schema({
   email: {
