@@ -1,29 +1,24 @@
 const express = require('express');
 const cors = require('cors');
-const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
+const { Resend } = require('resend');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ MongoDB connection (make sure MONGO_URI is set in Render environment variables)
+// MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log("MongoDB error:", err));
 
-// ✅ Transporter defined BEFORE routes so it's available when needed
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,       // set in Render environment variables
-    pass: process.env.EMAIL_PASS        // set in Render environment variables
-  }
-});
+// Resend email client
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// ✅ Schemas defined after mongoose is imported
+// Newsletter model
 const newsletterSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true }
+  email: { type: String, required: true, unique: true },
+  date: { type: Date, default: Date.now }
 });
 const Newsletter = mongoose.model("Newsletter", newsletterSchema);
 
@@ -48,12 +43,12 @@ app.post('/contact', async (req, res) => {
       return res.json({ message: "Subscribed successfully!" });
     }
 
-    // CONTACT or BOOKING → send email
+    // CONTACT or BOOKING → send email via Resend
     const subject = type === "booking" ? "New Booking Request" : "New Contact Message";
 
-    await transporter.sendMail({
-      from: `"GGBrass Website" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
+    await resend.emails.send({
+      from: 'GGBrass Website <onboarding@resend.dev>',
+      to: 'clementeklu2004@gmail.com',
       replyTo: email,
       subject: subject,
       text: `
@@ -80,8 +75,8 @@ app.post('/send-newsletter', async (req, res) => {
     const subscribers = await Newsletter.find();
 
     for (const sub of subscribers) {
-      await transporter.sendMail({
-        from: `"GGBrass" <${process.env.EMAIL_USER}>`,
+      await resend.emails.send({
+        from: 'GGBrass <onboarding@resend.dev>',
         to: sub.email,
         subject: subject,
         text: message

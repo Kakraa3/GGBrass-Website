@@ -17,10 +17,11 @@
     "url": "https://github.com/Kakraa3/GGBrass-Website/issues"
   },
   "homepage": "https://github.com/Kakraa3/GGBrass-Website#readme",
- "dependencies": {
+  "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^8.0.0",
-    "nodemailer": "^6.9.0"
+    "nodemailer": "^6.9.0",
+    "resend": "^6.10.0"
   }
 }
