@@ -442,6 +442,7 @@ header .navbar{
   float: right;
   font-size: 22px;
   cursor: pointer;
+  color: #0A2342;
 }
 
 /* Contact Form Styling */
