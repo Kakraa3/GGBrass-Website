@@ -213,3 +213,24 @@ if (newsletterForm) {
   });
 }
 
+// Gallery - load images from admin and append to existing list
+async function loadGalleryImages() {
+  try {
+    const res = await fetch('https://ggbrass-website-2.onrender.com/admin/images');
+    const images = await res.json();
+
+    const galleryList = document.getElementById('gallery-list');
+
+    images.forEach(img => {
+      const li = document.createElement('li');
+      li.className = 'gallery-items';
+      li.innerHTML = `<img src="${img.url}" alt="${img.label}" class="gallery-image">`;
+      galleryList.appendChild(li);
+    });
+
+  } catch (e) {
+    console.log('Could not load gallery images:', e);
+  }
+}
+
+loadGalleryImages();
