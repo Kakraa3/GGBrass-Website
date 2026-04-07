@@ -221,3 +221,23 @@ app.delete('/admin/images/:id', async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+// GET all events
+app.get('/admin/events', async (req, res) => {
+  const events = await Event.find().sort({ date: 1 });
+  res.json(events);
+});
+
+// POST new event
+app.post('/admin/events', async (req, res) => {
+  const { name, date, venue, description, ticketLink } = req.body;
+  const event = new Event({ name, date, venue, description, ticketLink });
+  await event.save();
+  res.json({ message: 'Event added successfully!' });
+});
+
+// DELETE an event
+app.delete('/admin/events/:id', async (req, res) => {
+  await Event.findByIdAndDelete(req.params.id);
+  res.json({ message: 'Event deleted.' });
+});

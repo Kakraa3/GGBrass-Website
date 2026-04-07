@@ -124,6 +124,20 @@ form.addEventListener("submit", async (e) => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  const eventTypeSelect = document.getElementById('event-type-select');
+const eventTypeOther = document.getElementById('event-type-other');
+
+eventTypeSelect.addEventListener('change', () => {
+  if (eventTypeSelect.value === 'Other') {
+    eventTypeOther.style.display = 'block';
+    eventTypeOther.required = true;
+  } else {
+    eventTypeOther.style.display = 'none';
+    eventTypeOther.required = false;
+    eventTypeOther.value = '';
+  }
+});
+
   const bookingForm = document.getElementById("booking-form");
 
   if (!bookingForm) {
@@ -234,3 +248,29 @@ async function loadGalleryImages() {
 }
 
 loadGalleryImages();
+
+// Load events from backend
+fetch('https://ggbrass-website-2.onrender.com/admin/events')
+  .then(r => r.json())
+  .then(events => {
+    const list = document.getElementById('event-list');
+    if (!events.length) {
+      list.innerHTML = '<li class="event-items"><p>No upcoming events at the moment. Check back soon!</p></li>';
+      return;
+    }
+    list.innerHTML = events.map(event => `
+      <li class="event-items">
+        <h3 class="event-name">${event.name}</h3>
+        <p class="event-date"><strong>Date:</strong> ${new Date(event.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+        <p class="event-location"><strong>Location:</strong> ${event.venue || 'TBA'}</p>
+        ${event.description ? `<p class="event-description">${event.description}</p>` : ''}
+        ${event.ticketLink
+          ? `<a href="${event.ticketLink}" class="button buy-ticket" target="_blank">Buy Ticket</a>`
+          : `<a href="#contact" class="button buy-ticket">Book Event</a>`}
+      </li>
+    `).join('');
+  })
+  .catch(() => {
+    document.getElementById('event-list').innerHTML =
+      '<li class="event-items"><p>Could not load events. Please try again later.</p></li>';
+  });

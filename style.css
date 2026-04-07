@@ -416,33 +416,84 @@ header .navbar{
 }
 
 .popup-content {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
+  background: var(--white-color);
+  padding: 35px 30px;
+  border-radius: var(--border-radius-s);
   width: 90%;
-  max-width: 400px;
+  max-width: 440px;
   text-align: center;
 }
 
-.popup-content input,
-.popup-content textarea {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
+.popup-content h2 {
+  font-size: var(--font-size-l);
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: var(--font-weight-semibold);
 }
 
-.popup-content button {
-  background: gold;
-  border: none;
-  padding: 10px 20px;
+.popup-content input,
+.popup-content select,
+.popup-content textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 15px;
+  border: 1px solid var(--medium-gray-color);
+  border-radius: var(--border-radius-s);
+  font-family: "Poppins", sans-serif;
+  font-size: var(--font-size-s);
+  outline: none;
+  background: var(--light-pink-color);
+  color: var(--dark-color);
+  transition: border 0.2s ease;
+}
+
+.popup-content input:focus,
+.popup-content select:focus,
+.popup-content textarea:focus {
+  border-color: var(--primary-color);
+  background: var(--white-color);
+}
+
+.popup-content select {
+  appearance: none;
   cursor: pointer;
+}
+
+.popup-content textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.popup-content button[type="submit"] {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: var(--primary-color);
+  color: var(--white-color);
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-m);
+  font-family: "Poppins", sans-serif;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.popup-content button[type="submit"]:hover {
+  background: transparent;
+  color: var(--primary-color);
 }
 
 .close-btn {
   float: right;
   font-size: 22px;
   cursor: pointer;
-  color: #0A2342;
+  color: var(--primary-color);
+  transition: 0.2s ease;
+}
+
+.close-btn:hover {
+  color: var(--secondary-color);
 }
 
 /* Contact Form Styling */

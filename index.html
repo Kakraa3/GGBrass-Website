@@ -59,7 +59,7 @@
                     <p class="description">GGBrass is a passionate brass band delivering powerful performances for concerts, churches, weddings, and special events. We bring music that moves hearts and energizes every audience. </p>
 
                     <div class="bottons">
-                        <a href="#events" class="button order-now"> Book Us </a>
+                        <a href="#" class="button order-now open-popup"> Book Us </a>
                         <a href="#contact" class="button contact-us"> Contact Us </a>
                     </div>
                 </div>
@@ -186,61 +186,10 @@
 <section class="event-section reveal" id="events">
     <h2 class="event-title">Upcoming Events</h2>
     <div class="section-content">
-        <ul class="event-list">
-
-            <!-- MAIN EVENT -->
-            <li class="event-items">
-                <h3 class="event-name">GGBrass Live at Dome Parakuo</h3>
-
-                <p class="event-date"><strong>Date:</strong> 25th December 2026</p>
-                <p class="event-location"><strong>Location:</strong> Dome Parakuo, Accra</p>
-                <p class="event-ticket"><strong>Tickets:</strong> GHS 50 (Regular) | GHS 100 (VIP)</p>
-
-                <!-- Countdown -->
-                <p class="event-countdown">
-                    ⏳ Event starts in: <span id="countdown"></span>
-                </p>
-
-                <p class="event-description">
-                    Join GGBrass for an unforgettable festive performance filled with powerful brass music,
-                    energy, and celebration. Experience live entertainment like never before this Christmas!
-                </p>
-
-                <a href="#upcoming-events" class="button buy-ticket">Buy Ticket</a>
-            </li>
-
-            <!-- SECOND EVENT -->
-            <li class="event-items">
-                <h3 class="event-name">Wedding Performance - East Legon</h3>
-                <p class="event-date"><strong>Date:</strong> 10th January 2027</p>
-                <p class="event-location"><strong>Location:</strong> East Legon, Accra</p>
-                <p class="event-description">
-                    A beautiful wedding celebration featuring live brass music by GGBrass.
-                </p>
-
-                <a href="#" class="button buy-ticket open-popup">Book Event</a>
-            </li>
-
-        </ul>
+        <ul class="event-list" id="event-list">
+  <li class="event-items"><p>Loading events...</p></li>
+</ul>
     </div>
-
-    <!-- BOOKING POPUP -->
-<div id="booking-popup" class="popup">
-  <div class="popup-content">
-    <span class="close-btn">&times;</span>
-
-    <h2>Book / Buy Ticket</h2>
-
-    <form id="booking-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <input type="text" placeholder="Event Type (Booking)" required>
-      <textarea placeholder="Your Message"></textarea>
-
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</div>
 </section>
          <!-- Contact section -->
          <section class="contact-section reveal" id="contact">
@@ -309,6 +258,34 @@
             </footer>
 
     </main>
+
+     <!-- BOOKING POPUP -->
+<div id="booking-popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+
+    <h2>Book Us</h2>
+
+    <form id="booking-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <select id="event-type-select" required>
+  <option value="" disabled selected>Select Event Type</option>
+  <option value="Weddings and Naming Ceremonies">Weddings and Naming Ceremonies</option>
+  <option value="Corporate Events">Corporate Events</option>
+  <option value="Concert Performances">Concert Performances</option>
+  <option value="Funeral Services">Funeral Services</option>
+  <option value="Processions and Health Walks">Processions and Health Walks</option>
+  <option value="Private Parties & Celebrations">Private Parties & Celebrations</option>
+  <option value="Other">Other (please specify)</option>
+</select>
+<input type="text" id="event-type-other" placeholder="Please describe your event" style="display:none" />
+      <textarea placeholder="Your Message"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
 
     <script src="script.js"></script>
 
