@@ -217,6 +217,16 @@ app.delete('/admin/images/:id', async (req, res) => {
   }
 });
 
+const eventSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  date: { type: Date, required: true },
+  venue: String,
+  description: String,
+  ticketLink: String,
+  createdAt: { type: Date, default: Date.now }
+});
+const Event = mongoose.model("Event", eventSchema);
+
 //  START SERVER
 
 const PORT = process.env.PORT || 5000;
