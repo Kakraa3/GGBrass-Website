@@ -261,7 +261,7 @@ fetch('https://ggbrass-website-2.onrender.com/admin/events')
     list.innerHTML = events.map(event => `
       <li class="event-items">
         <h3 class="event-name">${event.name}</h3>
-        <p class="event-date"><strong>Date:</strong> ${new Date(event.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+        <p class="event-date"><strong>Date:</strong> ${new Date(event.date).toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
         <p class="event-location"><strong>Location:</strong> ${event.venue || 'TBA'}</p>
         ${event.description ? `<p class="event-description">${event.description}</p>` : ''}
         ${event.ticketLink
